@@ -4,9 +4,9 @@
     top: 100px;
     left: 20%;
     border: 10px solid #a2c4db;
-    padding: 50px;
+    padding: 20px;
     width: 250px;
-    height: 350px;
+    height: 250px;
     background-color: #63a1ed;
     color: white;
     font-family: helvetica;
@@ -17,6 +17,7 @@
 h1 {
     width: 100%;
     text-align: center;
+    margin-top: auto;
 }
 
 #add, #sub, #mul, #dvd {
