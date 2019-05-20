@@ -5,14 +5,14 @@ arr2 = ["g", "r", "p", "c", "a", "q", "b"];
 
 arrEqCompare(arr1, arr2);
 
-function arrEqCompare(arr1, arr2) {
-    var Arr1 = arr1.sort();
-    var Arr2 = arr2.sort();
+function arrEqCompare(array1, array2) {
+    var arr1 = array1.sort();
+    var arr2 = array2.sort();
     if (arr1.length === arr2.length) {
         var k = arr1.length;
         var eqArr = [];
-        for (i=0; i<arr1.length; ++i) {
-            for (j=0; i<arr2.length; ++j) {
+        for (var i=0; i<arr1.length; ++i) {
+            for (var j=0; i<arr2.length; ++j) {
                 if (arr1[i] === arr2[j]) {
                     eqArr.push(1);
                 } continue;
