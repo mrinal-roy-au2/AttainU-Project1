@@ -1,5 +1,4 @@
 .jumbotron {
-    margin-left: 200px;
-    margin-right: 200px;
-    
+    position: relative;
+    margin: 100px 50px;
 }
