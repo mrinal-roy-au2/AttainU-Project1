@@ -1,0 +1,13 @@
+.container {
+    position: relative;
+    width: 30%;
+    top: 30px;
+}
+.table-container {
+    position: relative;
+    width: 70%;
+    top: 35px;
+    margin: auto 10%;
+
+
+}
