@@ -10,15 +10,13 @@ function inputCheck() {
     var user = document.getElementById('username').value;
     var code = document.getElementById('password').value;
     var reason1 = (user === "");
-    var reason2 = (code === "");
-    var reason3 = !(user.length >= 5);
-    var reason4 = !(code.length >= 8);
+    var reason2 = !(user.length >= 5);
     if ((user === "") || (code === "")) {
         if (reason1){
             alert("Username cannot be blank. Please try again !");
         } else alert("Password cannot be blank. Please try again !");
-    }else if (!(user.length >= 5) || !(code.length >= 8)) {
-            if (reason3) {
+    } else if (!(user.length >= 5) || !(code.length >= 8)) {
+            if (reason2) {
                 alert("Please Retry. Username should be atleast 5 character.");
             } else alert("Please Retry. Password should be atleast 8 character.");
         } else if (alphaNumCheck(user)) {
