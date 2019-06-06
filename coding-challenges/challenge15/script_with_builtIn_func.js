@@ -16,13 +16,3 @@ function nextLetterFunc (word) {
 
 nextLetterFunc("hello");
 nextLetterFunc("zeta");
-
-
-// below function does not use fromCharCode built-in string method
-// function nextLetterFuncWithoutBuiltIn(word){
-//     var new_word = "";
-//     var alpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
-//     for (var i=0; i<word.length; ++i) {
-//
-//
-// }
