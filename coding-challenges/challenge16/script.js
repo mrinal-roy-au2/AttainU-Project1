@@ -26,25 +26,33 @@ function urlParamFinder(url) {
         for (var k = startIndexParam2+1; k<url.length; k++) {
             parameter2 += url.charAt(k);
         }
-        console.log("Parameter1: "+parameter1+" Parameter2: "+parameter2);
+        console.log(keyValueSplit(parameter1)+" , "+keyValueSplit(parameter2));
         }
-
     }
+
+function keyValueSplit(input){    //function to split the parametric string
+    var dividingIndex;
+    for (var i=0; i<input.length; i++) {
+        if(input.charAt(i) === "=") {
+            dividingIndex = i;
+        }
+    }
+
+    var key="";
+    for (var j = 0; j<dividingIndex; j++) {
+        key += input.charAt(j);
+    }
+
+    var value="";
+    for (var k = dividingIndex+1; k<input.length; k++) {
+        value += input.charAt(k);
+    }
+
+    var keyValuePair = key + ":" + value;
+    return keyValuePair;
+}
+
 
 
 urlParamFinder("http://localhost:3000/add?num1=5&num2=3");
 urlParamFinder("http://localhost:3000/search");
-
-
-
-
-
-
-
-
-
-// Input: "http://localhost:3000/add?num1=5&num2=3"
-// Output: { "num1": 5, "num2": 3 }
-//
-// Input: "http://localhost:3000/search"
-// Output: "Missing URL parameters!"
