@@ -1,0 +1,79 @@
+[
+  {
+    "First_Name": "Ralph",
+    "Last_Name": "Elm",
+    "Student_ID": "E3456",
+    "User_name": "ralph123",
+    "Password": "reisgreat",
+    "Majors_in": "Engineering",
+    "Adm_Yr": 2012,
+    "Contact_Nr": 167895678950,
+    "Email": "ralph@uni.org"
+  },
+  {
+    "First_Name": "Martha",
+    "Last_Name": "Stewart",
+    "Student_ID": "H67956",
+    "User_name": "martha",
+    "Password": "martha@123",
+    "Majors_in": "Humanities",
+    "Adm_Yr": 2010,
+    "Contact_Nr": 4956864540,
+    "Email": "stewart@martha.com"
+  },
+  {
+    "First_Name": "K",
+    "Last_Name": "Sivakumar",
+    "Student_ID": "T67576",
+    "User_name": "sivak",
+    "Password": "sivathegod",
+    "Majors_in": "Theology",
+    "Adm_Yr": 2011,
+    "Contact_Nr": 7678636897,
+    "Email": "siva@me.com"
+  },
+  {
+    "First_Name": "Tony",
+    "Last_Name": "Stark",
+    "Student_ID": "P5639",
+    "User_name": "stark5679",
+    "Password": "ironisrusted",
+    "Majors_in": "Physics",
+    "Adm_Yr": 2012,
+    "Contact_Nr": 9278967736,
+    "Email": "tony@iron.com"
+  },
+  {
+    "First_Name": "Jason",
+    "Last_Name": "Statham",
+    "Student_ID": "M6864",
+    "User_name": "jasonstath",
+    "Password": "suitalways",
+    "Majors_in": "Mathematics",
+    "Adm_Yr": 2014,
+    "Contact_Nr": 6786786690,
+    "Email": "jason@bollywood.com"
+  },
+  {
+    "First_Name": "Vin",
+    "Last_Name": "Diesel",
+    "Student_ID": "M3492",
+    "User_name": "diesel007",
+    "Password": "emptytank",
+    "Majors_in": "Music",
+    "Adm_Yr": 2010,
+    "Contact_Nr": 5671536707,
+    "Email": "diesel@vin.com"
+},
+{
+  "First_Name": "Hugo",
+  "Last_Name": "Davis",
+  "Student_ID": "L6756",
+  "User_name": "hudav777",
+  "Password": "keepwriting",
+  "Majors_in": "Literature",
+  "Adm_Yr": 2008,
+  "Contact_Nr": 789567457,
+  "Email": "davis@hugo.com"
+}
+]

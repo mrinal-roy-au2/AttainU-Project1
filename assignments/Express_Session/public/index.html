@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body class="text-center">
+    <div class="container" style="position:relative;width:300px;top:60px;margin:auto auto">
+    <form class="form-signin" action="/auth" method="POST">
+        <img class="mb-4" src="Soletherm Technik Logo Final.PNG" alt="" width="80" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <!-- <label for="inputEmail" class="sr-only">User Name</label> -->
+        <input type="text" id="username" name = "username" class="form-control" placeholder="User Name" required autofocus>
+        <!-- <label for="inputPassword" class="sr-only">Password</label> -->
+        <input type="password" id="inputPassword" name = "password" class="form-control" placeholder="Password" required>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
+    </form>
+    </div>
+
+<script type="text/javascript" src = "userlog.js"></script>
+</body>
+
+</html>
