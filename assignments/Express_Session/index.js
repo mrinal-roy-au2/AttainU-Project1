@@ -13,6 +13,13 @@ app.use(session({
 
 app.use(bodyParser.urlencoded());
 
+app.use((req, res, next) => {
+    if (req.session.loggedIn != true && (req.originalUrl.indexOf('/web-mail.html') != -1 || req.originalUrl.indexOf('index.html') != -1)) {
+        res.redirect('/login');
+    }
+    next();
+});
+
 app.use(express.static('public'));
 
 app.get('/login', (req, res) => {
@@ -42,7 +49,5 @@ app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/login');
 });
-
-
 
 app.listen(PORT, ()=> { console.log("Express_Session Server is running in Port "+PORT);});
