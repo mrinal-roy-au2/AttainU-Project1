@@ -1,0 +1,24 @@
+ask-stack@2.2.0
+atom-beautify@0.33.4
+atom-file-icons@0.7.1
+atom-live-server@2.3.0
+atom-nodejs-snippets@2.1.1
+emmet@2.4.3
+es6-javascript@1.0.0
+expressjs@2.2.0
+file-type-icons@1.3.4
+highlight-selected@0.16.0
+linter@2.3.0
+linter-flake8@2.4.0
+linter-jshint@3.1.16
+minimap@4.29.9
+pigments@0.40.2
+platformio-ide-terminal@2.9.1
+script@3.18.1
+seti-ui-red@0.13.0
+todo-show@2.3.2
+
+
+apm list --installed --bare > my_atom_packages.txt
+apm install --packages-file my_atom_packages.txt
+
