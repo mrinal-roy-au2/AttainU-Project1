@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Twitter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+</head>
+
+<body class>
+    <div class="container" style="position:relative;width:500px;top:60px;margin:auto auto">
+
+        <!-- '<div class="card bg-light mb-3" style="max-width: 18rem;">'+
+            '<div class="card-header">Tweet #'+i+'</div>'+
+                '<div class="card-body">'+
+                    '<h5 class="card-title">'+tweetsdata[i].name+'</h5>'+
+                    '<p class="card-text">'+tweetsdata[i].tweet+'</p>'+
+                '</div>'+
+        '</div>' -->
+
+
+    <form action="/myTweet" method="POST">
+        <div class="form-group">
+            <label for="username"></label>
+            <input type="text" class="form-control" id="username" name = "name" placeholder="User Name">
+        </div>
+
+        <div class="form-group">
+            <label for="usertweet"></label>
+            <textarea class="form-control" id="usertweet" rows="4" name = "tweet" placeholder="Your Tweet goes here"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Post Tweet</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $.ajax({
+        url: "/gettweets",
+        method: 'get',
+        dataType: "json",
+        success: function(tweetsdata) {
+            $('.container').prepend('<div class="card bg-light mb-3" style="max-width: 30rem;"></div>')
+            for (var i = 0; i < tweetsdata.length; i++) {
+                j = i+1;
+                $('.card').append('<div class="card-header">Tweet #'+j+'</div>'+
+                    '<div class="card-body">'+
+                        '<h5 class="card-title">'+tweetsdata[i].name+'</h5>'+
+                        '<p class="card-text">'+tweetsdata[i].tweet+'</p>'+
+                    '</div>');
+            }
+        },
+        statusCode: { 204: function() {alert("User Not Found");} }
+        });
+
+
+
+</script>
+</body>
+
+</html>
