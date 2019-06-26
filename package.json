@@ -2,7 +2,7 @@
   "name": "bluemoon_stock-portfolio",
   "version": "1.0.0",
   "description": "bluemoon_stock-portfolio",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
