@@ -27,7 +27,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="./Home.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="./myportfolio.html">My Portfolio <span class="sr-only">(current)</span></a>
@@ -40,9 +40,15 @@
               <a class="nav-link" href="./marketnews.html">Market News</a>
             </li>
              
-              <li class="nav-item active">
-                <a class="nav-link" href="./login.html">Login</a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./signup.html">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -60,7 +66,7 @@
                       
                       <div class="panel-body">
                         <div class="form-horizontal">
-                                    <form>
+                                    <form action="/signup" method="POST">
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">First Name</label>
                                             <div class="col-sm-4">
@@ -79,22 +85,22 @@
                             <div class="form-group">
                                             <label class="col-sm-2 control-label">User Name</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" type="text" name="department"
+                                                <input class="form-control" type="text" name="email"
                                                     placeholder="Username" ng-model="me.email">
                                             </div>
                                         </div>
                             <div class="form-group">
                                             <label class="col-sm-2 control-label">Password</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" type="text" name="title"
-                                                    placeholder="Enter Password" ng-model="me.email">
+                                                <input class="form-control" type="text" name="password"
+                                                    placeholder="Enter Password" ng-model="me.password">
                                             </div>
                                         </div>
                             <div class="form-group">
                                             <label class="col-sm-2 control-label">Re-enter Password</label>
                                             <div class="col-sm-4">
-                                                <input class="form-control" type="text" name="startDate"
-                                                    placeholder="re-enter password" ng-model="me.email">
+                                                <input class="form-control" type="text" name="password"
+                                                    placeholder="re-enter password" ng-model="me.password">
                                             </div>
                                         </div>            
                             
