@@ -14,7 +14,10 @@ const htmlPath = path.join(__dirname, '/userfiles');
 const dbPath = path.join(__dirname, '/dbfolder');
 const imgPath = path.join(__dirname, '/images');
 
-const dbURL = "mongodb://localhost:27017/";
+// var dbURL;
+
+
+var dbURL = process.env.MY_DB || "mongodb://localhost:27017/";
 
 
 app.use(session({
@@ -35,13 +38,13 @@ mongoClient.connect(dbURL, function (err, client) {
 });
 
 /* Home route '/' landing page for all */
-app.get('/', (req, res) => {
+app.get('/', function (req, res) {
   res.sendfile('index.html');
 });
 
 
 // opens login & new user page
-app.get('/login', (req, res) => {
+app.get('/login', function (req, res) {
   if (req.session.loggedIn===true) {
     redirect('/');
   } else {
@@ -50,18 +53,22 @@ app.get('/login', (req, res) => {
 });
 
 
-// Authentication Route to verify user login credentials
-app.post('/auth', (req, res) => {
+// Authentication Route to verify user login credentials & creates session variables
+app.post('/auth', function (req, res) {
   for (var i=0; i<userlist.length; i++) {
     if ((userlist[i].username === req.body.username) && (userlist[i].password === req.body.password)) {
-      req.session.loggedIn = true; }
+      req.session.loggedIn = true;
+      req.session.username = userlist[i].username;
+      req.session.password = userlist[i].password;
+      req.session.mailID = userlist[i].email;
+    }
     }
     res.redirect('/user');
 });
 
 
 /*Checks unauthorsied access to myportfolio & mywatchlist pages*/
-app.use((req, res, next) => {
+app.use(function (req, res, next) {
     if (req.session.loggedIn != true && (req.originalUrl.indexOf('myportfolio.html') != -1 || req.originalUrl.indexOf('mywatchlist.html') != -1)) {
         res.redirect('/login');
     }
@@ -69,9 +76,8 @@ app.use((req, res, next) => {
 });
 
 
-
 // Redirection Route /profile only visible after successful login with a logout link
-app.get('/user', (req, res) => {
+app.get('/user', function (req, res) {
     if (req.session.loggedIn === true) {
         res.redirect('/profile');
     } else {
@@ -80,13 +86,17 @@ app.get('/user', (req, res) => {
 });
 
 
-app.get('/profile', (req, res) => {
+app.get('/profile', function (req, res) {
   res.redirect('/portfolio');
 });
 
-//Displays user portfolio OR directs to login
-app.get('/portfolio', (req, res) => {
+//creates a document in user collection with session variables; this document also has an empty portfolio
+app.get('/portfolio', function (req, res) {
   if (req.session.loggedIn===true) {
+    // db.collection('user').insert({"username": req.session.username}, {"password":req.session.password}, {"email":req.session.mailID}, {"userportfolio":[]}, function(err, result){
+    //   if (err) throw err;
+    //   console.log(result);
+    // });
     res.sendfile('myportfolio.html');
     }
   else {
@@ -95,43 +105,64 @@ app.get('/portfolio', (req, res) => {
 });
 
 
-//New portfolio will be created by makefolio.js ; this route /makefolio is merely redirected to /portfolio
-  app.post('/makefolio', (req, res) => {
+//updates the user document by pushing a new portfolio to the array of portfolios for the user
+  app.post('/makenewfolio', function (req, res) {
     if (req.session.loggedIn===true) {
-      db.collection('userfolio').insertOne((req.body),(function (err, result) {
-        if (err) {throw err;
-        } db.collection('userfolio').find({}).toArray(function(err, result){
-          if (err) throw err;
-          res.end();
-        });
-    }));
+      db.collection('user').updateOne({"username": req.session.username}, {$push:{"userportfolio":{"folioname":req.body.folioname, "stocks":[]}}}, function (err, result) {
+        if (err) throw err;
+        res.end();
+      });
   } else {
     res.redirect('/portfolio');
   }
 });
 
+//add scrips to a user portfolio
+app.post('/addscrip', function (req, res) {
+  if (req.session.loggedIn===true) {
+    var temp_arr = [];
+    var scrip = req.body.scrip;
+    var buyprice = req.body.buyprice;
+    var qty = req.body.qty;
+    console.log(scrip, buyprice, qty);
+    db.collection('user').updateOne({
+      "username": req.session.username,
+      "userportfolio":[{"folioname":req.body.folioname}]},
+      {$push:{"stocks":[{"scrip":scrip}, {"buyprice":buyprice}, {"qty":qty}]}}, function (err, result) {
+      if (err) throw err;
+      console.log("written in db");
+      console.log(res.json(result));
+    });
+} else {
+  res.redirect('/portfolio');
+}
+});
+
+
+
 //opens summary page
-app.get('/getsummary', (req, res) => {
+app.get('/getsummary', function (req, res) {
   res.sendfile('summary.html');
 });
 
 //Gives the list of scrips to script.js to evaluate the summary
-  app.get('/getfolio', (req, res) => {
-    db.collection('userfolio').find({}).toArray(function (err, result) {
+  app.get('/getfolio', function (req, res) {
+    db.collection('user').find({}).toArray(function (err, result) {
       res.json(result);
     });
   });
 
-  app.get('/marketnews', (req, res) => {
+  app.get('/marketnews', function (req, res) {
     res.sendfile('marketnews.html');
   });
 
 // Logout Route /logout to destroy the session
-app.get('/logout', (req, res) => {
+app.get('/logout', function (req, res) {
     req.session.destroy();
     res.redirect('/login');
 });
 
-app.listen(PORT, ()=> {
+app.listen(PORT, function(){
   var time = new Date();
-  console.log(`Server `+__filename.split('/').pop()+` is Running on PORT ${PORT} at `+ time.toTimeString());});
+  console.log(`Server `+__filename.split('/').pop()+` is Running on PORT ${PORT} at `+ time.toTimeString());
+});

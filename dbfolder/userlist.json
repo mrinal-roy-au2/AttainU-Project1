@@ -1,13 +1,16 @@
 [{
-    "username": "mrinal@mrinal.com",
-    "password": "mrinal@1234"
+    "username": "mrinal",
+    "password": "mrinal@1234",
+    "email": "mrinal@mrinal.com"
   },
   {
-    "username": "sourav@sourav.com",
-    "password": "sourav@1234"
+    "username": "sourav",
+    "password": "sourav@1234",
+    "email": "sourav@sourav.com"
   },
   {
-    "username": "sirisha@sirisha.com",
-    "password": "sirisha@1234"
+    "username": "sirisha",
+    "password": "sirisha@1234",
+    "email": "sirisha@sirisha.com"
   }
 ]
