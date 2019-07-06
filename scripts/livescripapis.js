@@ -1,76 +1,78 @@
 //function liveFeed provides live feeds of the Indian indices, live feeds Global
 //Scrips from NYSE, NASDAQ and live feeds of Global Indices
+
+
 function liveFeed () {
-  var list_of_stocks = [];
-  var i, arg;
-  $.ajax({  //start ajax1 for live 3 stock prices at random every minute() - LIVE STOCK UPDATES
-    url: "../dbfolder/Scrip_Codes_global.json", // later to be replaced with /companyMasterData
-    datatype: "json",
-    success: function(scripsymbdata) {
-      var j = 0;
-      for (i = 0; i < 3; i++) {
-        var data = scripsymbdata[Math.floor(Math.random() * 100)].symb;
-        arg = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + data + "&apikey=PUQRIVP3LNMBSDKV";
-        $.ajax({  //start ajax2
-          url: arg,
-          datatype: "json",
-          success: function(arg) {
-            for (var prop in arg) {
-              for (var k = 0; k < scripsymbdata.length; k++) {
-                if (arg[prop]["01. symbol"] === scripsymbdata[k].symb) {
-                  $("#LiveStocks .list-group-item").eq(j).text(scripsymbdata[k].company + "    $" + arg[prop]["05. price"]);
+    var list_of_stocks = [];
+    var i, arg;
+    $.ajax({  //start ajax1 for live 3 stock prices at random every minute() - LIVE STOCK UPDATES
+      url: "../dbfolder/Scrip_Codes_global.json", // later to be replaced with /companyMasterData
+      datatype: "json",
+      success: function(scripsymbdata) {
+        var j = 0;
+        for (i = 0; i < 3; i++) {
+          var data = scripsymbdata[Math.floor(Math.random() * 100)].symb;
+          arg = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + data + "&apikey=PUQRIVP3LNMBSDKV";
+          $.ajax({  //start ajax2
+            url: arg,
+            datatype: "json",
+            success: function(arg) {
+              for (var prop in arg) {
+                for (var k = 0; k < scripsymbdata.length; k++) {
+                  if (arg[prop]["01. symbol"] === scripsymbdata[k].symb) {
+                    $("#LiveStocks .list-group-item").eq(j).text(scripsymbdata[k].company + "    $" + arg[prop]["05. price"]);
+                  }
                 }
+                j++;
               }
-              j++;
             }
-          }
-        });  //end ajax2
+          });  //end ajax2
+        }
       }
-    }
-  }); //end ajax1
-  $.ajax({  //start ajax3  : for LIVE INDIAN MARKET INDICES
-      url: "../dbfolder/mkt_indx_list.json", // later to be replaced with /marketindex
-      datatype: "json",
-      success: function(mkt_indx_data) {
-      var q = 0;
-      for (var p = 0; p < mkt_indx_data.length; p++) {
-        var targetAPI = "https://api.worldtradingdata.com/api/v1/stock?symbol=" + mkt_indx_data[p].symbol + "&api_token=XhT2mZngF8LE4lMYG4872dofVlbXfuWfOhfsi6P02vKIsC1XZ8sx94dNaC1e";
-        $.ajax({  //start ajax4
-          url: targetAPI,
-          datatype: "json",
-          success: function(mktIndxOut) {
-            $("#MarketIndex li.list-group-item").eq(q).text(mktIndxOut.data[0]["name"] + "       " + mktIndxOut.data[0]["price"]);
-            q++;
-            // }
-          }
-        }); //end ajax4
+    }); //end ajax1
+    $.ajax({  //start ajax3  : for LIVE INDIAN MARKET INDICES
+        url: "../dbfolder/mkt_indx_list.json", // later to be replaced with /marketindex
+        datatype: "json",
+        success: function(mkt_indx_data) {
+        var q = 0;
+        for (var p = 0; p < mkt_indx_data.length; p++) {
+          var targetAPI = "https://api.worldtradingdata.com/api/v1/stock?symbol=" + mkt_indx_data[p].symbol + "&api_token=VVt6GxT1CJHeLIeLCgBM9yFT0VEvhvdrLASFJSzA1bwja7TT2DJT7QGPjRny";
+          $.ajax({  //start ajax4
+            url: targetAPI,
+            datatype: "json",
+            success: function(mktIndxOut) {
+              $("#MarketIndex li.list-group-item").eq(q).text(mktIndxOut.data[0]["name"] + "       " + mktIndxOut.data[0]["price"]);
+              q++;
+              // }
+            }
+          }); //end ajax4
+        }
       }
-    }
-  });  //end ajax3
-  $.ajax({    //start ajax5  : for LIVE GLOBAL MARKET INDICES
-      url: "../dbfolder/global_indx_list.json", // later to be replaced with /globalindex in Mongo
-      datatype: "json",
-      success: function(global_indx_data) {
-      var m = 0;
-      for (var n = 0; n<global_indx_data.length; n++) {
-        var targetAPI = "https://api.worldtradingdata.com/api/v1/stock?symbol="+global_indx_data[n].symbol+"&api_token=XhT2mZngF8LE4lMYG4872dofVlbXfuWfOhfsi6P02vKIsC1XZ8sx94dNaC1e";
-        $.ajax({    //start ajax6
-          url: targetAPI,
-          datatype: "json",
-          success: function(globalIndxOut) {
-            $("#GlobalIndex li.list-group-item").eq(m).text(globalIndxOut.data[0]["name"] + "      -       " + globalIndxOut.data[0]["price"]);
-            m++;
-            // }
-          }
-        });    //end ajax6
+    });  //end ajax3
+    $.ajax({    //start ajax5  : for LIVE GLOBAL MARKET INDICES
+        url: "../dbfolder/global_indx_list.json", // later to be replaced with /globalindex in Mongo
+        datatype: "json",
+        success: function(global_indx_data) {
+        var m = 0;
+        for (var n = 0; n<global_indx_data.length; n++) {
+          var targetAPI = "https://api.worldtradingdata.com/api/v1/stock?symbol="+global_indx_data[n].symbol+"&api_token=VVt6GxT1CJHeLIeLCgBM9yFT0VEvhvdrLASFJSzA1bwja7TT2DJT7QGPjRny";
+          $.ajax({    //start ajax6
+            url: targetAPI,
+            datatype: "json",
+            success: function(globalIndxOut) {
+              $("#GlobalIndex li.list-group-item").eq(m).text(globalIndxOut.data[0]["name"] + "      -       " + globalIndxOut.data[0]["price"]);
+              m++;
+            }
+          });    //end ajax6
+        }
       }
-    }
-  });  //end ajax5
-}
+    });  //end ajax5
+  }
 
+  $(document).ready(liveFeed());
 
-// $(document).ready(liveFeed());
-$(document).ready(setInterval(liveFeed(), 1800100));
+  $(document).ready(setInterval(function() {liveFeed();}, 60100));
+
 
 
 
