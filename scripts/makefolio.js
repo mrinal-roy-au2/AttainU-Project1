@@ -138,7 +138,7 @@ $(document).ready(function() {
             var targetValURL =
               "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" +
               company_tag +
-              "&apikey=PUQRIVP3LNMBSDKV";
+              "&apikey=K2BXGMZ4C27JWZVX";
             $.ajax({
               //Ajax to fetch current market price while buying
               url: targetValURL,
