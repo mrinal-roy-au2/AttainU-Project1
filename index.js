@@ -161,16 +161,16 @@ app.post("/addscrip", function(req, res) {
 //gets the list of folios from the mongo db collection 'userfolio'
 app.get("/getfoliolist", function(req, res) {
   console.log("Request for list of folios received");
-  console.log(
-    db
-      .collection("userfolio")
-      .aggregate({ $project: { count: { $size: "$userportfolio" } } })
-  );
+  db.collection("userfolio").distinct("userportfolio.folioname", function(
+    err,
+    result
+  ) {
+    res.json(result);
+  });
 
   // db.collection("userfolio").find({ userportfolio: {folioname:  }, function(err, result) {
   //   console.log(userportfolio);
   // });
-  res.json(result);
 
   // res.json(folios); //Gives the list of userfolios to AJAX call in makefolio.js to evaluate the summary
 });

@@ -48,25 +48,35 @@ $(document).ready(function() {
     summaryBtn +=
       '</div><select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">';
     summaryBtn += "<option selected>Choose Portfolio...</option>";
+    function getFolios() {
+      $.ajax({
+        //Use Ajax to POST this addNewFolio variable to backend-db
+        type: "GET",
+        // async: false,
+        url: "/getfoliolist",
+        dataType: "json",
+        success: function(listOfFolios) {
+          console.log(listOfFolios);
+          // for (var i = 0; i < listOfFolios.length; i++) {
+          //   summaryBtn +=
+          //     "<option value=" +
+          //     listOfFolios[i].folioname +
+          //     ">" +
+          //     listOfFolios[i].folioname +
+          //     "</option>";
+          // }
+          // summaryBtn += "</select></div></div>";
 
-    $.ajax({
-      //Use Ajax to POST this addNewFolio variable to backend-db
-      type: "GET",
-      // async: false,
-      url: "/getfoliolist",
-      dataType: "json",
-      success: function(listOfFolios) {
-        for (var key in listOfFolios) {
-          summaryBtn +=
-            "<option value=" +
-            listOfFolios[key].folioname +
-            ">" +
-            listOfFolios[key].folioname +
-            "</option>";
+          for (var i = 0; i < listOfFolios.length; i++) {
+            $("#inputGroupSelect03").append(
+              $("<option></option>")
+                .attr("value", listOfFolios[i])
+                .text(listOfFolios[i])
+            );
+          }
         }
-        summaryBtn += "</select></div></div>";
-      }
-    });
+      });
+    }
 
     var modalForm =
       '<div class="container"><div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">';
@@ -93,6 +103,7 @@ $(document).ready(function() {
       //click event of 'Add Stocks to Portfolio' button
       $("#inputGroupSelect01").remove();
       $("#optionLabel").remove();
+      getFolios();
       $.ajax({
         //function to read stock symbols & create select-option list
         url: "../dbfolder/Scrip_Codes_global.json",
