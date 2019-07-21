@@ -110,12 +110,12 @@ router.post('/signup', function(req,res){
           password: req.body.password}, function(err, response){
             if (err) throw err;
           });
-          res.send('You have succesfully signed up.' + '  <a href="/login">Login to access your account now</a>');
+          res.send('You have succesfully signed up.' + '  <a href="/user/login">Login to access your account now</a>');
           } else {
-          res.send('Your password and re-enter password donot match. Please try again.' + '  <a href="/signup">Signup</a>');
+          res.send('Your password and re-enter password donot match. Please try again.' + '  <a href="/user/register">Signup</a>');
             }
           } else {
-            res.send('You are already registered. '+'<a href="/login">Login to access your account now</a>');
+            res.send('You are already registered. '+'<a href="/user/login">Login to access your account now</a>');
           }
         });
 
