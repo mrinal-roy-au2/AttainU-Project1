@@ -14,7 +14,7 @@ function liveFeed() {
         arg =
           "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" +
           data +
-          "&apikey=K2BXGMZ4C27JWZVX";
+          "&apikey=QFPE374MAA7UUDC7";
         $.ajax({
           //start ajax2
           url: arg,
@@ -23,13 +23,7 @@ function liveFeed() {
             for (var prop in arg) {
               for (var k = 0; k < scripsymbdata.length; k++) {
                 if (arg[prop]["01. symbol"] === scripsymbdata[k].symb) {
-                  $("#LiveStocks .list-group-item")
-                    .eq(j)
-                    .text(
-                      scripsymbdata[k].company +
-                        "    $" +
-                        arg[prop]["05. price"]
-                    );
+                  $("#LiveStocks .list-group-item").eq(j).text(scripsymbdata[k].company+"    $"+arg[prop]["05. price"]);
                 }
               }
               j++;
@@ -49,7 +43,7 @@ function liveFeed() {
         var targetAPI =
           "https://api.worldtradingdata.com/api/v1/stock?symbol=" +
           mkt_indx_data[p].symbol +
-          "&api_token=cK9QB25V1qrXwN1dgm9eTuxVHuIolFJoFgTc8doDOR6ZSQLaIrrA8YTvgfP3";
+          "&api_token=wso87Yf3WBt4CnOvw813HMgaluNhQUPDhjwxRxiYgqsNTIdmK9tOgjaWbIM5";
         $.ajax({
           //start ajax4
           url: targetAPI,
@@ -79,7 +73,7 @@ function liveFeed() {
         var targetAPI =
           "https://api.worldtradingdata.com/api/v1/stock?symbol=" +
           global_indx_data[n].symbol +
-          "&api_token=cK9QB25V1qrXwN1dgm9eTuxVHuIolFJoFgTc8doDOR6ZSQLaIrrA8YTvgfP3";
+          "&api_token=wso87Yf3WBt4CnOvw813HMgaluNhQUPDhjwxRxiYgqsNTIdmK9tOgjaWbIM5";
         $.ajax({
           //start ajax6
           url: targetAPI,
@@ -102,7 +96,7 @@ function liveFeed() {
 }
 
 // $(document).ready(liveFeed());
-$(document).ready(setInterval(liveFeed(), 1800100));
+$(document).ready(setInterval(liveFeed(), 60100));
 
 /*
 

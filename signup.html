@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>BlueMoon SignUp</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- custom styles -->
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+      .logo{
+        width: 150px;
+        opacity: 1;
+        filter: brightness( 100% ) contrast( 100% ) saturate( 100% ) blur( 0px ) hue-rotate( 0deg );
+        border-radius: 50px 50px 50px 50px;
+      }
+    div.col1{background: url("images/signup1.jpeg") no-repeat center center fixed;
+    background-size: cover;
+     background-color:#46b3e2; height: 30vh;
+     }
+     h2.a{text-align: center; color: #ffffff; size: 35px; margin-top: 0px;
+      text-shadow: 0px -10px 50px rgba(0,0,0,0.13);}
+    h2.b{
+      text-align: center; color: #ffffff; font-size: 197px; letter-spacing: -8px;
+      text-shadow: 0px -10px 50px rgba(0,0,0,0.13);
+    }
+     h2{
+      font-family: "Roboto", Sans-serif;
+        font-weight: 600;
+        line-height: 0.9;
+
+    }
+    .col22{
+      background-color: #f12184;
+    }
+    .nav-item{
+
+    color: white;
+    }
+    .btn1{
+      position: absolute;
+     left: 50%;
+    margin-left: -100px;
+    /* width: 50%; */
+
+
+      font-size: 20px;
+        fill: #ffffff;
+        color: #46b3e2;
+        padding: 15px 30px;
+        /* margin-left: 50%; */
+        background-color: #ffffff;
+        border-radius: 50px 50px 50px 50px;
+        font-family: "Roboto", Sans-serif;
+        font-weight: 500;
+        text-align: center;
+    }
+    .btn2{
+      font-size: 20px;
+        fill: #ffffff;
+        color: #46b3e2;
+        background-color: #ffffff;
+        border-radius: 50px 50px 50px 50px;
+        font-family: "Roboto", Sans-serif;
+        font-weight: 500;
+        text-align: center;
+    }
+
+
+
+    </style>
+
+</head>
+
+<body>
+    <!-- <div class="row">
+        <div class="col col1">
+          <h2 class="a">Bluemoon</h2>
+<p><h2 class="b">Stock-Portfolio</h2></p>
+<div>
+  <p id="sometext">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam, officia.</p>
+</div>
+
+  <span><button class="btn btn1" type="submit"><span>
+    <i class="fa fa-bar-chart-o" aria-hidden="true"></i>
+</span>Register Below To Start Trading</button>
+  </span>
+        </div>
+        </div> -->
+
+        <!-- this is another row -->
+<div class="row">
+  <div class="col col22">
+
+
+
+      <nav class="navbar navbar-expand-lg navbar-dark">
+          <a class="navbar-brand" href="#">
+              <!-- <img src="images/bluemoonlogo.jpg" width="300" height="50" class="d-inline-block align-top" alt="bluemoon"> -->
+              <img src="/images/bluemoon.png" class="logo" alt="bluemoon logo file bluemoon.png">
+
+            </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Home </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/portfolio">My Portfolio</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">My Watchlist</a>
+              </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/marketnews">Market News</a>
+            </li>
+            <!-- if (req.session.loggedIn===true) { -->
+              <!-- <li class="nav-item">
+                <a class="nav-link" href="/user/logout">logout</a>
+            </li> -->
+          <!-- }
+          else{ -->
+            <li class="nav-item">
+              <a class="nav-link" href="/user/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/register">Signup <span class="sr-only">(current)</span></a>
+        </li>
+          <!-- } -->
+
+
+
+
+
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+              <button class="btn btn2" type="submit">Search <i class="fa fa-search"></i></button>
+
+
+            </form>
+          </div>
+        </nav>
+      </div>
+
+      </div>
+    <div class="container-fluid mt-2">
+
+
+  <div class="card card-form">
+
+    <!--Card content-->
+    <div class="card-body rounded-top pink darken-4">
+
+        <h3 class="font-weight-bold text-center text-uppercase text-white mt-4">Sign up</h3>
+
+        <!-- Form -->
+        <form class="pb-3 px-2" action="/user/signup" method="post">
+
+            <!-- User Name -->
+            <div class="md-form">
+                <i class="far fa-user prefix text-white"></i>
+                <input type="text" id="materialRegisterFormFirstName" name="username" class="form-control text-white">
+                <label class="text-white" for="materialRegisterFormUserName">User Name</label>
+            </div>
+
+
+            <!-- E-mail -->
+            <div class="md-form mt-0">
+                <i class="far fa-envelope prefix text-white"></i>
+                <input type="email" id="materialRegisterFormEmail" name="email" class="form-control text-white">
+                <label class="text-white" for="materialRegisterFormEmail">E-mail</label>
+            </div>
+
+            <!-- Password -->
+            <div class="md-form">
+                <i class="far fa-star prefix text-white"></i>
+                <input type="password" id="materialRegisterFormPassword" name="password" class="form-control text-white" aria-describedby="materialRegisterFormPasswordHelpBlock">
+                <label class="text-white" for="materialRegisterFormPassword">Password</label>
+                <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-white">
+                    At least 8 characters and 1 digit
+                </small>
+            </div>
+            <!-- Re-enter Password -->
+            <div class="md-form">
+                <i class="far fa-hand-point-right prefix text-white"></i>
+                <input type="password" id="re_enterPassword" name="re_enterpassword" class="form-control text-white">
+                <label class="text-white" for="re_enterPassword">Re-enter password</label>
+                <small id="materialRegisterRe-enterPasswordHelpBlock" class="form-text text-white">
+                    Both the password should be same
+                </small>
+            </div>
+
+
+            <!-- Sign up button -->
+            <button type="Submit" class="btn btn-outline-success btn-block my-4 z-depth-2 btn-rounded waves-effect">Sign Up</button>
+            <!-- <button class="btn btn-rounded btn-block my-4 waves-effect z-depth-2" type="submit">Sign Up</button> -->
+
+        </form>
+        <!-- Form -->
+
+    </div>
+
+    <div class="card card-form-2">
+      <div class="card-body">
+
+        <!-- Form -->
+        <form class="text-center">
+
+          <!-- Newsletter -->
+
+
+
+
+          <!-- Social register -->
+          <p>or sign up with:</p>
+
+          <i class="fab fa-lg fa-facebook-f pink-accent-text px-2"></i>
+          <i class="fab fa-lg fa-twitter pink-accent-text px-2"></i>
+          <i class="fab fa-lg fa-linkedin-in pink-accent-text px-2"></i>
+          <i class="fab fa-lg fa-github pink-accent-text px-2"></i>
+
+          <hr>
+
+          <!-- Terms of service -->
+          <p>By clicking
+              <em>Sign up</em> you agree to our
+              <a class="pink-accent-text" href="#!" target="_blank">terms of service</a> and
+              <a class="pink-accent-text" href="#!" target="_blank">terms of service</a>. </p>
+
+        </form>
+        <!-- Form -->
+
+      </div>
+    </div>
+</div>
+</div>
+
+
+<div class="info-color-dark text-center py-4">
+
+
+
+
+
+  </div>
+<footer>
+    <div class="row">
+      <div class="col" style="color: #ffffff">
+        <h6>Project Bluemoon</h6>
+        <h5>About Us</h5>
+        <p>Mrinal Roy<br>
+          Sirisha Bhattula<br>
+          Sourav Mandal<br>
+          Phone: <a href="tel:xxxxxxxx">xxxxxxxx</a></p>
+
+      </div>
+      <div class="col" style="color: #ffffff">
+        <form id="subscribe-form" action="//hbloom.us13.list-manage.com/subscribe/post?u=cbf06c865350d306d818ddda6&amp;id=6152e6d667" method="post" target="_blank">
+          <p>Sign up to receive news and special offers from BlueMoon</p>
+          <fieldset class=" ">
+              <input type="email" placeholder="Your Email Address" name="EMAIL" id="subscribe-form-email" required="" class=" "><input type="submit" id="subscribe-form-submit" value="SUBSCRIBE">
+          </fieldset>
+      </form>
+      <br>
+
+      <div class="social-networks">
+          <i class="fab fa-lg fa-facebook-f pink-accent-text px-3"></i>
+          <i class="fab fa-lg fa-twitter pink-accent-text px-3"></i>
+          <i class="fab fa-lg fa-linkedin-in pink-accent-text px-3"></i>
+          <i class="fab fa-lg fa-instagram pink-accent-text px-3"></i>
+
+
+
+              </div>
+      </div>
+
+      <div class="col" style="color: #747474">
+        <h4>Contact</h4>
+
+        <h5>Mrinal Roy</h5>
+        <p>Bangalore <br>
+          xxxxxxxxx<br>
+          xxxxxxxxxxx<br>
+          xxxxxxxxx <br>
+          Phone: <a href="tel:xxxxxxxx">xxxxxxxxxxxx</a></p>
+      </div>
+      <div class="col" style="color: #747474">
+        <h4>Contact</h4>
+
+        <h6>Sirisha Bhatula</h6>
+        <h5>xxxxxxx</h5>
+        <p>xxxxxxxxxx <br>xxxxxxxxx <br>xxxxxxxxxx</p>
+      </div>
+      <div class="col" style="color: #747474">
+        <h4>Contact</h4>
+        <h5>Sourav Mandal</h5>
+        <p>Puratan Jitpur, Tehatta, Nadia<br>
+          West Bengal 741160<br>
+          India <br>
+          Phone: <a href="tel:9475314468">9475314468</a></p>
+      </div>
+
+    </div>
+    <div class="footer-wide-bottom">
+      <div class="footer clearfix" style="color: #ffffff">
+        <p>© 2019 Bluemoon. All Rights Reserved. <br>
+          <a href="/" target="_blank">Privacy Policy</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>
