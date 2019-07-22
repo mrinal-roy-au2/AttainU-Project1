@@ -97,27 +97,33 @@ router.post('/signup', function(req,res){
   var email =req.body.email;
   var password = req.body.password;
   var reenterpassword = req.body.re_enterpassword;
-  if ((db.collection("user").find({username: req.body.username, email: req.body.email}))===null) {
-    if (password === reenterpassword) {
-      var data = {
-        "username": username,
-        "email": email,
-        "password": password
-        };
-        db.collection("user").insertOne(
-          {username: req.body.username,
-          email: req.body.email,
-          password: req.body.password}, function(err, response){
-            if (err) throw err;
-          });
+  var message;
+  if (password === reenterpassword) {
+    db.collection('user').findOne({username: req.body.username, email: req.body.email}, function(err, isUser){
+      if (err){console.log(err);}
+      if(isUser) {
+        res.send('You are already registered. <a href="/user/login">Login<a> to access your account now');
+        // console.log(message);
+    } else {
+        var data = {
+          "username": username,
+          "email": email,
+          "password": password
+          };
+          db.collection('user').insertOne({"username": req.body.username,"email": req.body.email,"password": req.body.password});
           res.send('You have succesfully signed up.' + '  <a href="/user/login">Login to access your account now</a>');
-          } else {
-          res.send('Your password and re-enter password donot match. Please try again.' + '  <a href="/user/register">Signup</a>');
-            }
-          } else {
-            res.send('You are already registered. '+'<a href="/user/login">Login to access your account now</a>');
-          }
+          // console.log(message);
+        }
         });
+          } else {
+            res.send('Mismatch in passwords entered. Try to <a href="/user/register">signup</a> again.');
+            // console.log(message);
+          }
+          // console.log(message);
+          // res.send(message);
+      });
+
+
 
 
 //Route to reset password page
